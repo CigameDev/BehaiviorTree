@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
-    //Patroling tu?n tra
+    //Patroling tuần tra
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
@@ -36,8 +36,8 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(myTransform.position, sightRange, whatIsPlayer);//trong ph?m vi ?u?i theo
-        playerInAttackRange = Physics.CheckSphere(myTransform.position,attackRange, whatIsPlayer);//trong ph?m vi t?n c�ng
+        playerInSightRange = Physics.CheckSphere(myTransform.position, sightRange, whatIsPlayer);//trong phạm vi đuổi theo
+        playerInAttackRange = Physics.CheckSphere(myTransform.position,attackRange, whatIsPlayer);//trong phạm vi tấn công
 
         if(!playerInSightRange && !playerInAttackRange)Patroling();
         if(playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Patroling()
     {
-        //tu?n tra
+        //tuần tra
         if (!walkPointSet) SearchWalkPoint();
 
         if(walkPointSet)agent.SetDestination(walkPoint);
@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChasePlayer()
     {
-        //?u?i theo player
+        //đuổi theo player
         agent.SetDestination(player.position);
     }    
 
